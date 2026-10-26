@@ -7,12 +7,12 @@ for LP-MSPM0L2228 LaunchPad
 - ARM GCC (`arm-none-eabi-gcc`)
 - GNU Make and Git
 - OpenOCD [latest development build](https://github.com/openocd-org/openocd/releases/tag/latest) with MSPM0 support (stable 0.12.0 lacks it)
-- Linux, or Ubuntu under WSL with [usbipd-win](https://github.com/dorssel/usbipd-win)
+- Linux, macOS, or Ubuntu under WSL with [usbipd-win](https://github.com/dorssel/usbipd-win)
 
 Optional: if you use [Nix](https://nixos.org/download/) and run `nix-shell` to get
 the build tools above. `make setup` downloads the TI MSPM0 SDK.
 
-## Run
+## Run (Linux / WSL)
 
 Connect the LaunchPad's XDS110 USB port, then:
 
@@ -25,6 +25,31 @@ make serial           # 115200 baud; Ctrl-C to exit
 ```
 
 For another serial port: `make serial PORT=/dev/ttyACM1`.
+
+## macOS
+Note: this is untested cause i don't have a mac so good luck!
+
+Install [Homebrew](https://brew.sh/), then:
+
+```sh
+brew install git
+brew install --cask gcc-arm-embedded
+brew install --HEAD open-ocd
+```
+
+Use `--HEAD` for MSPM0 support. macOS's Command Line Tools provide `make`.
+Connect the LaunchPad's XDS110 USB port, then:
+
+```sh
+make setup            # once
+make flash            # src/blink.c
+make flash APP=rng    # src/rng.c
+ls /dev/cu.usbmodem*
+screen /dev/cu.usbmodemXXXX 115200
+```
+
+Replace `XXXX` with your port's suffix. Exit screen with Ctrl-A, then `\`, then
+`y`. Skip `make usb`; `make serial` uses Linux's `stty` syntax.
 
 ## Windows / WSL
 
