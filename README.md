@@ -37,7 +37,7 @@ brew install --cask gcc-arm-embedded
 brew install --HEAD open-ocd
 ```
 
-Use `--HEAD` for MSPM0 support. macOS's Command Line Tools provide `make`.
+Use `--HEAD` for MSPM0 support, since that will install the dev version that has the required MSPM0 config file
 Connect the LaunchPad's XDS110 USB port, then:
 
 ```sh
