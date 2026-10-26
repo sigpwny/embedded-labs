@@ -1,0 +1,10 @@
+/build/
+/.deps/
+/.direnv/
+/result
+/result-*
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
