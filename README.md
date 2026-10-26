@@ -1,7 +1,6 @@
 # Embedded lab
 
-LP-MSPM0L2228 LaunchPad lab using TI's C SDK: blink an LED, then generate random
-numbers and print them over serial.
+for LP-MSPM0L2228 LaunchPad
 
 ## Requirements
 

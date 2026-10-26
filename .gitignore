@@ -1,4 +1,5 @@
 /build/
+/solutions/
 /.deps/
 /.direnv/
 /result
